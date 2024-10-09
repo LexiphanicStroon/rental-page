@@ -109,14 +109,17 @@ export default function ProductDetailsPage({ params }) {
         {/* Date Picker */}
         <div className="mt-8">
           <h3 className="font-semibold text-lg">Select Rental Dates:</h3>
-          <DateRange
-            editableDateInputs={true}
-            onChange={handleDateChange}
-            moveRangeOnFirstSelection={false}
-            ranges={dateRange}
-            minDate={new Date()}
-            rangeColors={['#3f87a6']}
-          />
+          <div className="w-full">
+            <DateRange
+              editableDateInputs={true}
+              onChange={handleDateChange}
+              moveRangeOnFirstSelection={false}
+              ranges={dateRange}
+              minDate={new Date()}
+              rangeColors={['#3f87a6']}
+              className="w-full"
+            />
+          </div>
         </div>
 
         {/* Reservation Form */}
@@ -135,7 +138,7 @@ export default function ProductDetailsPage({ params }) {
               placeholder="Your Name"
               value={formData.name}
               onChange={handleChange}
-              className="p-2 border border-gray-300 rounded"
+              className="p-2 border border-gray-300 rounded w-full"
               required
             />
             <input
@@ -144,7 +147,7 @@ export default function ProductDetailsPage({ params }) {
               placeholder="Your Email"
               value={formData.email}
               onChange={handleChange}
-              className="p-2 border border-gray-300 rounded"
+              className="p-2 border border-gray-300 rounded w-full"
               required
             />
             <input
@@ -153,10 +156,13 @@ export default function ProductDetailsPage({ params }) {
               placeholder="Your Phone"
               value={formData.phone}
               onChange={handleChange}
-              className="p-2 border border-gray-300 rounded"
+              className="p-2 border border-gray-300 rounded w-full"
               required
             />
-            <button type="submit" className="bg-black text-white p-2 rounded">
+            <button
+              type="submit"
+              className="bg-black text-white p-2 rounded w-full"
+            >
               Submit Reservation
             </button>
           </form>
