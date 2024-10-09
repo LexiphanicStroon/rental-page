@@ -109,7 +109,9 @@ export default function ProductDetailsPage({ params }) {
         {/* Date Picker */}
         <div className="mt-8">
           <h3 className="font-semibold text-lg">Select Rental Dates:</h3>
-          <div className="w-full">
+          <div className="w-full sm:w-[500px]">
+            {' '}
+            {/* Adjust width for desktop */}
             <DateRange
               editableDateInputs={true}
               onChange={handleDateChange}
@@ -118,6 +120,7 @@ export default function ProductDetailsPage({ params }) {
               minDate={new Date()}
               rangeColors={['#3f87a6']}
               className="w-full"
+              scroll={{ enabled: true }}
             />
           </div>
         </div>
