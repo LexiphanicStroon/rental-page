@@ -7,6 +7,7 @@ import { DateRange } from 'react-date-range'; // Import DateRange from the date-
 import { addDays } from 'date-fns'; // You may need date-fns to help with date manipulation
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import Head from 'next/head';
 
 export default function ProductDetailsPage({ params }) {
   const router = useRouter();
@@ -73,7 +74,14 @@ export default function ProductDetailsPage({ params }) {
   if (!product) {
     return (
       <div className="p-8">
+        <Head>
+          <title>Rental not found</title>
+        </Head>
         <h1>Product not found</h1>
+        <p>
+          We're sorry, we couldn't find that item, or there was an error on this
+          page.
+        </p>
         <button
           onClick={() => router.back()}
           className="mt-4 px-4 py-2 bg-gray-800 text-white rounded"
@@ -85,92 +93,96 @@ export default function ProductDetailsPage({ params }) {
   }
 
   return (
-    <div className="p-8">
-      <button
-        onClick={() => router.back()}
-        className="mb-4 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded"
-      >
-        Go Back
-      </button>
-      <div className="bg-white text-black p-4 shadow-md rounded-md">
-        <img
-          src={`/${product.image}`}
-          alt={product.title}
-          className="w-full h-64 object-contain"
-        />
-        <h1 className="mt-4 text-2xl font-bold">{product.title}</h1>
-        <p className="mt-2 text-gray-600">${product.price}/day</p>
+    <>
+      <title>{`Rentals | ${product.title}`}</title>
+      <div className="p-8">
+        <button
+          onClick={() => router.back()}
+          className="mb-4 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded"
+        >
+          Go Back
+        </button>
+        <div className="bg-white text-black p-4 shadow-md rounded-md">
+          <img
+            src={`/${product.image}`}
+            alt={product.title}
+            className="w-full h-64 object-contain"
+          />
+          <h1 className="mt-4 text-2xl font-bold">{product.title}</h1>
+          <p className="mt-2 text-gray-600">${product.price}/day</p>
 
-        <div className="mt-4">
-          <h3 className="font-semibold text-lg">Description:</h3>
-          <p className="mt-2 text-gray-700">{product.description}</p>
-        </div>
+          <div className="mt-4">
+            <h3 className="font-semibold text-lg">Description:</h3>
+            <p className="mt-2 text-gray-700">{product.description}</p>
+          </div>
 
-        {/* Date Picker */}
-        <div className="mt-8">
-          <h3 className="font-semibold text-lg">Select Rental Dates:</h3>
-          <div className="w-full sm:w-[500px]">
-            {' '}
-            {/* Adjust width for desktop */}
-            <DateRange
-              editableDateInputs={true}
-              onChange={handleDateChange}
-              moveRangeOnFirstSelection={false}
-              ranges={dateRange}
-              minDate={new Date()}
-              rangeColors={['#3f87a6']}
-              className="w-full"
-              scroll={{ enabled: true }}
-            />
+          {/* Date Picker */}
+          <div className="mt-8">
+            <h3 className="font-semibold text-lg">Select Rental Dates:</h3>
+            <div className="w-full sm:w-[500px]">
+              {' '}
+              {/* Adjust width for desktop */}
+              <DateRange
+                editableDateInputs={true}
+                onChange={handleDateChange}
+                moveRangeOnFirstSelection={false}
+                ranges={dateRange}
+                minDate={new Date()}
+                rangeColors={['#3f87a6']}
+                className="w-full"
+                scroll={{ enabled: true }}
+              />
+            </div>
+          </div>
+
+          {/* Reservation Form */}
+          <div className="mt-8">
+            <h3 className="font-semibold text-lg">Reserve Now:</h3>
+            <p className="text-gray-600 mb-4">
+              Fill out your details below to reserve your rental and we will
+              send you a confirmation email within 24 hours. Payments due in
+              full prior to rental pickup. Visa, Mastercard, AMEX, and
+              E-Transfer accepted.
+            </p>
+
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                className="p-2 border border-gray-300 rounded w-full"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
+                className="p-2 border border-gray-300 rounded w-full"
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Your Phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="p-2 border border-gray-300 rounded w-full"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-black text-white p-2 rounded w-full"
+              >
+                Submit Reservation
+              </button>
+            </form>
           </div>
         </div>
-
-        {/* Reservation Form */}
-        <div className="mt-8">
-          <h3 className="font-semibold text-lg">Reserve Now:</h3>
-          <p className="text-gray-600 mb-4">
-            Fill out your details below to reserve your rental and we will send
-            you a confirmation email within 24 hours. Payments due in full prior
-            to rental pickup. Visa, Mastercard, AMEX, and E-Transfer accepted.
-          </p>
-
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              className="p-2 border border-gray-300 rounded w-full"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="p-2 border border-gray-300 rounded w-full"
-              required
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Your Phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="p-2 border border-gray-300 rounded w-full"
-              required
-            />
-            <button
-              type="submit"
-              className="bg-black text-white p-2 rounded w-full"
-            >
-              Submit Reservation
-            </button>
-          </form>
-        </div>
       </div>
-    </div>
+    </>
   );
 }
