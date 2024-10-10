@@ -22,7 +22,11 @@ export async function POST(request) {
   });
 
   const clientMsg = {
-    to: 'hello@spaceproof.tech',
+    to: [
+      'hello@spaceproof.tech',
+      'riley@butterknifecreative.com',
+      'billy@butterknifecreative.com',
+    ],
     from: 'hello@spaceproof.tech',
     subject: `New Rental Reservation for ${product}`,
     text: `You have received a new rental request.\n\nDetails:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nRental Dates: ${formattedStartDate} - ${formattedEndDate}\nProduct: ${product}`,
@@ -32,7 +36,7 @@ export async function POST(request) {
     to: email,
     from: 'hello@spaceproof.tech',
     subject: `Confirmation for Your Rental Reservation of ${product}`,
-    text: `Thank you, ${name}, for your rental request!\n\nWe have received your details:\n\nRental Dates: ${formattedStartDate} - ${formattedEndDate}\nProduct: ${product}\n\nWe will send you a confirmation within 24 hours. Payments are due in full prior to rental pickup. Visa, Mastercard, AMEX, and E-Transfer are accepted.`,
+    text: `Thank you, ${name}, for your rental request!\n\nWe have received your details:\n\nRental Dates: ${formattedStartDate} - ${formattedEndDate}\nProduct: ${product}\n\nWe will send you a confirmation within 24 hours with pickup instructions, and a final invoice. Payments are due in full prior to rental pickup. Visa, Mastercard, AMEX, and E-Transfer are accepted.`,
   };
 
   try {
