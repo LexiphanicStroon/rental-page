@@ -22,11 +22,7 @@ export async function POST(request) {
   });
 
   const clientMsg = {
-    to: [
-      'hello@spaceproof.tech',
-      'riley@butterknifecreative.com',
-      'billy@butterknifecreative.com',
-    ],
+    to: ['hello@spaceproof.tech'],
     from: 'hello@spaceproof.tech',
     subject: `New Rental Reservation for ${product}`,
     text: `You have received a new rental request.\n\nDetails:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nRental Dates: ${formattedStartDate} - ${formattedEndDate}\nProduct: ${product}`,

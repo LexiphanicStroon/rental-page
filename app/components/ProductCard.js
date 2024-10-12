@@ -23,7 +23,7 @@ export default function ProductCard({ product }) {
         href={`/rentals/${product.id}`}
         className="mt-4 px-24 hover:bg-[#22CE88] transition-colors duration-200 hover:text-black font-medium py-2 bg-black text-white rounded"
       >
-        Read More
+        Get A Quote
       </a>
     </div>
   );
