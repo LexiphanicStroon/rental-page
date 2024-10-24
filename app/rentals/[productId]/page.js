@@ -7,7 +7,6 @@ import { DateRange } from 'react-date-range'; // Import DateRange from the date-
 import { addDays } from 'date-fns'; // You may need date-fns to help with date manipulation
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import Head from 'next/head';
 
 export default function ProductDetailsPage({ params }) {
   const router = useRouter();
