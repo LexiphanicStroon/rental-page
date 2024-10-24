@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import products from '../../data/products';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DateRange } from 'react-date-range'; // Import DateRange from the date-range library
 import { addDays } from 'date-fns'; // You may need date-fns to help with date manipulation
 import 'react-date-range/dist/styles.css'; // main css file
@@ -20,6 +20,15 @@ export default function ProductDetailsPage({ params }) {
     email: '',
     phone: '',
   });
+
+  useEffect(() => {
+    if (product) {
+      const productSection = document.getElementById('product-section');
+      if (productSection) {
+        productSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [product]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -102,7 +111,10 @@ export default function ProductDetailsPage({ params }) {
         >
           Go Back
         </button>
-        <div className="bg-white text-black p-4 shadow-md rounded-md">
+        <div
+          id="product-section"
+          className="bg-white text-black p-4 shadow-md rounded-md"
+        >
           <img
             src={`/${product.image}`}
             alt={product.title}
