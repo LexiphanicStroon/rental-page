@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <Analytics />
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-9MPV1680GR`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-MEMLV0HS0E`}
         />
         <Script
           strategy="afterInteractive"
@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-9MPV1680GR', {
+              gtag('config', 'G-MEMLV0HS0E', {
                 page_path: window.location.pathname,
               });
             `,
