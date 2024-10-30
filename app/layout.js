@@ -12,14 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-background text-foreground">
-        {/* <Header /> */}
-        <div className="container mx-auto">{children}</div>
-        {/* <Footer /> */}
-        <Analytics />
+      <head>
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-MEMLV0HS0E`}
+          src="https://www.googletagmanager.com/gtag/js?id=G-MEMLV0HS0E"
         />
         <Script
           strategy="afterInteractive"
@@ -28,12 +24,16 @@ export default function RootLayout({ children }) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-MEMLV0HS0E', {
-                page_path: window.location.pathname,
-              });
+              gtag('config', 'G-MEMLV0HS0E');
             `,
           }}
         />
+      </head>
+      <body className="bg-background text-foreground">
+        {/* <Header /> */}
+        <div className="container mx-auto">{children}</div>
+        {/* <Footer /> */}
+        <Analytics />
       </body>
     </html>
   );
