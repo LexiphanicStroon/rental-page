@@ -59,6 +59,14 @@ const handleSubmit = async (e) => {
   });
 
   if (response.ok) {
+    window.va('event', {
+      name: 'ReservationRequest',
+      data: {
+        product: product.title,
+        startDate: selectedDates.startDate.toISOString(),
+        endDate: selectedDates.endDate.toISOString(),
+      },
+    });
     alert(
       'Reservation request sent! You will receive a confirmation email shortly.'
     );
@@ -67,7 +75,7 @@ const handleSubmit = async (e) => {
   }
 };
 
-// State for the date picker
+
 const [dateRange, setDateRange] = useState([
   {
     startDate: new Date(),

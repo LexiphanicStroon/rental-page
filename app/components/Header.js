@@ -111,7 +111,7 @@ export default function Header() {
         {/* Social Icons */}
         <div className="hidden md:flex space-x-4">
           <a
-            href="https://www.instagram.com/yourprofile"
+            href="http://tiktok.com/@butterknifecreative"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#FFDE32] transition-colors"
@@ -120,7 +120,7 @@ export default function Header() {
           </a>
 
           <a
-            href="https://www.tiktok.com/@yourprofile"
+            href="http://instagram.com/butterknifecreative"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#FFDE32] transition-colors"

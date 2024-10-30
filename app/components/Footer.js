@@ -7,9 +7,9 @@ export default function Footer() {
         {/* Logo and tagline */}
         <div className="flex flex-col items-center md:items-start">
           <Image
-            src="/assets/horizontal-logo.png" // Assuming you store the logo in /public/assets
+            src="/assets/horizontal-logo.png"
             alt="ButterKnife Creative Logo"
-            width={200} // Adjust according to the logo size
+            width={200}
             height={60}
           />
           <p className="mt-2 text-gray-400">CREATE MORE.</p>
@@ -81,6 +81,9 @@ export default function Footer() {
             </li>
           </ul>
         </div>
+      </div>
+      <div className="w-full flex justify-center my-4">
+        <hr className="w-full max-w-screen-lg border-t border-gray-500 border-opacity-50" />
       </div>
 
       {/* Contact info */}
