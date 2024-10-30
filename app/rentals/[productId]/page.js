@@ -13,14 +13,17 @@ export default function ProductDetailsPage({ params }) {
   const { productId } = params;
   const product = products.find((p) => p.id === productId);
 
-  const scrollElementIntoView = (element, behavior = 'smooth') => {
-    const scrollTop = window.pageYOffset || element.scrollTop;
-    const finalOffset = element.getBoundingClientRect().top + scrollTop;
-    window.scrollTo({
-      top: finalOffset,
-      behavior,
-    });
-  };
+const scrollElementIntoView = (element, behavior = 'smooth') => {
+  const scrollTop = window.pageYOffset || element.scrollTop;
+  const offset = -100;
+  const finalOffset = element.getBoundingClientRect().top + scrollTop + offset;
+
+  window.scrollTo({
+    top: finalOffset,
+    behavior,
+  });
+};
+
 
   const [formData, setFormData] = useState({
     name: '',
