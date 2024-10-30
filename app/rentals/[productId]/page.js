@@ -15,8 +15,7 @@ export default function ProductDetailsPage({ params }) {
 
 const scrollElementIntoView = (element, behavior = 'smooth') => {
   const scrollTop = window.pageYOffset || element.scrollTop;
-  const offset = -100;
-  const finalOffset = element.getBoundingClientRect().top + scrollTop + offset;
+  const finalOffset = element.getBoundingClientRect().top + scrollTop;
 
   window.scrollTo({
     top: finalOffset,
@@ -24,21 +23,21 @@ const scrollElementIntoView = (element, behavior = 'smooth') => {
   });
 };
 
+const [formData, setFormData] = useState({
+  name: '',
+  email: '',
+  phone: '',
+});
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-  });
-
-  useEffect(() => {
-    if (product) {
-      const productSection = document.getElementById('product-section');
-      if (productSection) {
-        scrollElementIntoView(productSection);
-      }
+useEffect(() => {
+  if (product) {
+    const goBackButton = document.getElementById('go-back-button');
+    if (goBackButton) {
+      scrollElementIntoView(goBackButton);
     }
-  }, [product]);
+  }
+}, [product]);
+
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -115,6 +114,7 @@ return (
     <title>{`Rentals | ${product.title}`}</title>
     <div className="p-2 sm:p-8">
       <button
+        id="go-back-button"
         onClick={() => router.back()}
         className="mb-4 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded"
       >
