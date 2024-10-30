@@ -31,9 +31,9 @@ const [formData, setFormData] = useState({
 
 useEffect(() => {
   if (product) {
-    const goBackButton = document.getElementById('go-back-button');
-    if (goBackButton) {
-      scrollElementIntoView(goBackButton);
+    const scrollAnchor = document.getElementById('scroll-anchor');
+    if (scrollAnchor) {
+      scrollAnchor.scrollIntoView({ behavior: 'smooth' });
     }
   }
 }, [product]);
@@ -113,13 +113,16 @@ return (
   <>
     <title>{`Rentals | ${product.title}`}</title>
     <div className="p-2 sm:p-8">
-      <button
-        id="go-back-button"
-        onClick={() => router.back()}
-        className="mb-4 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded"
-      >
-        Go Back
-      </button>
+      <div id="scroll-anchor">
+        <button
+          id="go-back-button"
+          onClick={() => router.back()}
+          className="mb-4 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded"
+        >
+          Go Back
+        </button>
+      </div>
+
       <div
         id="product-section"
         className="bg-white text-black p-4 shadow-md rounded-md"
