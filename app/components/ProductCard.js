@@ -21,7 +21,7 @@ export default function ProductCard({ product }) {
       <p className="text-black">${product.price}/day</p>
       <a
         href={`/rentals/${product.id}`}
-        className="mt-4 px-24 hover:bg-[#22CE88] transition-colors duration-200 hover:text-black font-medium py-2 bg-black text-white rounded"
+        className="mt-4 text-sm px-4 sm:px-8 lg:px-24 hover:bg-[#22CE88] transition-colors duration-200 hover:text-black font-medium py-2 bg-black text-white rounded w-full sm:w-auto"
       >
         Get A Quote
       </a>
