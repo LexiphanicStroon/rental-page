@@ -33,10 +33,14 @@ useEffect(() => {
   if (product) {
     const scrollAnchor = document.getElementById('scroll-anchor');
     if (scrollAnchor) {
-      scrollAnchor.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        scrollAnchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      }, 100); 
     }
   }
 }, [product]);
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();
