@@ -64,6 +64,8 @@ export default function ProductDetailsPage({ params }) {
           product: product.title,
           startDate: selectedDates.startDate.toISOString(),
           endDate: selectedDates.endDate.toISOString(),
+          customnerName: formData.name,
+          customnerEmail: formData.email,
         },
       });
       alert(
